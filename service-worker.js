@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.c5f0a3fc333d5cbb10bbb1dd4498aac4.js"
+  "/precache-manifest.5cf1eee3ca8d36337098a0d0f330002e.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "pacman"});
