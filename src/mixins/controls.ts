@@ -1,15 +1,8 @@
-<template>
-    <div></div>
-</template>
-
-<script lang="ts">
+import { Direction } from '@/core/types';
+import { MOVE_PACMAN_ACTION } from '@/store';
 import { Component, Vue } from 'vue-property-decorator';
 
-import { Direction } from '@/core/types';
-
-import { MOVE_PACMAN_ACTION } from '@/store';
-
-const KEYBOARD_DIRECTION_MAPPING: {[key: string]: Direction} = {
+const KEYBOARD_DIRECTION_MAPPING: { [key: string]: Direction } = {
   ArrowDown: 'DOWN',
   ArrowUp: 'UP',
   ArrowRight: 'RIGHT',
@@ -18,11 +11,14 @@ const KEYBOARD_DIRECTION_MAPPING: {[key: string]: Direction} = {
 
 @Component
 export default class Controls extends Vue {
-  keyboardListener: undefined | ((event: KeyboardEvent) => void)
+  keyboardListener: undefined | ((event: KeyboardEvent) => void);
 
   mounted() {
     this.keyboardListener = (event: KeyboardEvent) => {
-      if (this.$store.state.isGameRunning && ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)) {
+      if (
+        this.$store.state.isGameRunning
+        && ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)
+      ) {
         event.preventDefault();
         this.$store.dispatch(MOVE_PACMAN_ACTION, KEYBOARD_DIRECTION_MAPPING[event.key]);
       }
@@ -36,4 +32,3 @@ export default class Controls extends Vue {
     }
   }
 }
-</script>

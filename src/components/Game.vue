@@ -1,7 +1,6 @@
 <template>
   <div class="game">
     <div v-if="isGameRunning">
-      <Controls />
       <h3>Score: {{ score }}</h3>
       <Board />
       <router-link class="about-link" to="/about">About</router-link>
@@ -9,26 +8,26 @@
     <div v-else>
       <h3 v-if="isGameOver">GAME OVER</h3>
       <h3 v-else-if="isGameCompleted">YOU WIN</h3>
-      <h3 v-if="isGameOver">Score : {{ score }}</h3>
+      <h3 v-if="isGameOver">Score: {{ score }}</h3>
       <button @click="restart">restart</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component } from 'vue-property-decorator';
+
+import ControlsMixin from '@/mixins/controls';
 
 import { RESTART_ACTION } from '@/store';
-import Controls from '@/components/Controls.vue';
 import Board from '@/components/Board.vue';
 
 @Component({
   components: {
-    Controls,
     Board,
   },
 })
-export default class Game extends Vue {
+export default class Game extends ControlsMixin {
   mounted() {
     if (!this.$store.state.isGameRunning) {
       this.$store.dispatch(RESTART_ACTION);
