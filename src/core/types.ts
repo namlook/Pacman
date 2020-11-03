@@ -7,12 +7,7 @@ export const VOID = 1;
 export type GridItem = typeof BLOCK | typeof CANDY | typeof VOID
 export type Grid = GridItem[][]
 
-export const UP = 'UP';
-export const DOWN = 'DOWN';
-export const LEFT = 'LEFT';
-export const RIGHT = 'RIGHT';
-
-export type Direction = typeof UP | typeof DOWN | typeof LEFT | typeof RIGHT
+export type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
 
 export type Position = {x: number; y: number}
 
